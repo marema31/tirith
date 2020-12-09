@@ -1,0 +1,434 @@
+basePath: /
+definitions:
+  videogame.VGInput:
+    properties:
+      extensionOf:
+        type: integer
+      platform:
+        type: integer
+      support:
+        type: string
+      title:
+        type: string
+      type:
+        type: integer
+    required:
+    - platform
+    - support
+    - title
+    - type
+    type: object
+  videogame.VGTInput:
+    properties:
+      name:
+        type: string
+    required:
+    - name
+    type: object
+  videogame.VideoGamePlateform:
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+    type: object
+  videogame.vGPInput:
+    properties:
+      name:
+        type: string
+    required:
+    - name
+    type: object
+info:
+  contact:
+    email: marema31t@github.io
+    name: Marema31
+    url: https://github.com/marema31
+  description: Playground application for learning go, gin framework and several deployment
+    options.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Tirith
+  version: "1.0"
+paths:
+  /:
+    get:
+      consumes:
+      - application/json
+      description: list all videogame
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/videogame.VideoGamePlateform'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: list videogame
+      tags:
+      - videogame
+  /platform:
+    get:
+      consumes:
+      - application/json
+      description: list all videogame platforms
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/videogame.VideoGamePlateform'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: list videogame platforms
+      tags:
+      - platform
+  /platform/:
+    post:
+      consumes:
+      - application/json
+      description: create a videogame platform
+      parameters:
+      - description: platform attribute
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/videogame.vGPInput'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/videogame.VideoGamePlateform'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: create videogame platform
+      tags:
+      - platform
+  /platform/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: delete a videogame platform
+      parameters:
+      - description: platform to delete
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: delete a videogame platform
+      tags:
+      - platform
+    get:
+      consumes:
+      - application/json
+      description: find a videogame platform
+      parameters:
+      - description: platform to find
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/videogame.VideoGamePlateform'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: find videogame platform
+      tags:
+      - platform
+    put:
+      consumes:
+      - application/json
+      description: create a videogame platform
+      parameters:
+      - description: find platform
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: platform to update
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/videogame.vGPInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/videogame.VideoGamePlateform'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: update a videogame platform
+      tags:
+      - platform
+  /type:
+    get:
+      consumes:
+      - application/json
+      description: list all videogame types
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/videogame.VideoGamePlateform'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: list videogame types
+      tags:
+      - type
+  /type/:
+    post:
+      consumes:
+      - application/json
+      description: create a videogame type
+      parameters:
+      - description: type attribute
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/videogame.VGTInput'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/videogame.VideoGamePlateform'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: create videogame type
+      tags:
+      - type
+  /type/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: delete a videogame type
+      parameters:
+      - description: type to delete
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: delete a videogame type
+      tags:
+      - type
+    get:
+      consumes:
+      - application/json
+      description: find a videogame type
+      parameters:
+      - description: type to find
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/videogame.VideoGamePlateform'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: find videogame type
+      tags:
+      - type
+    put:
+      consumes:
+      - application/json
+      description: create a videogame type
+      parameters:
+      - description: find type
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: type to update
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/videogame.VGTInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/videogame.VideoGamePlateform'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: update a videogame type
+      tags:
+      - type
+  /videogame/:
+    post:
+      consumes:
+      - application/json
+      description: create a videogame
+      parameters:
+      - description: ' attribute'
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/videogame.VGInput'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/videogame.VideoGamePlateform'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: create videogame
+      tags:
+      - videogame
+  /videogame/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: delete a videogame
+      parameters:
+      - description: ' to delete'
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: delete a videogame
+      tags:
+      - videogame
+    get:
+      consumes:
+      - application/json
+      description: find a videogame
+      parameters:
+      - description: ' to find'
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/videogame.VideoGamePlateform'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: find videogame
+      tags:
+      - videogame
+    put:
+      consumes:
+      - application/json
+      description: create a videogame
+      parameters:
+      - description: 'find '
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: ' to update'
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/videogame.VGInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/videogame.VideoGamePlateform'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: update a videogame
+      tags:
+      - videogame
+swagger: "2.0"

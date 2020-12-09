@@ -9,7 +9,7 @@ import (
 
 var DB *gorm.DB
 
-func ConnectDatabase() {
+func ConnectDatabase() error {
 	dsn := "user=games password=94m35G@mes dbname=games host=palantir port=5432 sslmode=disable TimeZone=Europe/Paris"
 	database, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 
@@ -17,7 +17,7 @@ func ConnectDatabase() {
 		panic("Failed to connect to database!")
 	}
 
-	videogame.AutoMigrate(database)
-
 	DB = database
+
+	return videogame.AutoMigrate(database)
 }
